@@ -1,0 +1,148 @@
+// @import url(font.less);
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.App {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.left-side {
+    width: 50%;
+    padding-top: 20px;
+    height: 100vh;
+    padding-left: 64px;
+    box-sizing: border-box;
+}
+
+.logo {
+    height: 32px;
+    width: 120px;
+}
+
+.right-side {
+    background: #6DBFD1;
+    width: 50%;
+    height: 100vh;
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    justify-content:center;
+
+	.links{
+		margin-top: 50px;
+
+		.cloud{
+	    	color: white;
+	        text-decoration: none;
+	    	transition: 0.3 all ease-in-out;
+
+			font-size: 16px;
+			line-height: 24px;
+			//bold
+
+			font-weight: bold;
+			&:hover{
+	        	color: lighten(#6DBFD1, 15%);
+	        	transition: 0.3 all ease-in-out;
+	        }
+	    }
+	}
+    .links ul li {
+        display: inline-block;
+        margin-right: 40px;
+        margin-bottom: 15px;
+
+    	a{
+	        color: white;
+	        text-decoration: none;
+	    	transition: 0.3 all ease-in-out;
+
+			font-size: 16px;
+			line-height: 24px;
+			//bold
+
+			font-weight: bold;
+    		&:hover{
+	        	color: lighten(#6DBFD1, 15%);
+	        	transition: 0.3 all ease-in-out;
+	        }
+    	}
+
+        
+
+        &:last-child {
+		    margin-right: 0;
+		}
+
+    }
+
+
+
+    .title-text{
+    	// .font-regular-Avenir();
+		font-size: 24px;
+		line-height: 32px;
+		margin-bottom: 40px;
+		color: white
+    }
+
+}
+
+form{
+	width: 430px;
+	margin-top: 72px;
+
+	h1{
+		margin-bottom: 64px;
+		font-size: 36px;
+		line-height: 48px;
+		//regular
+	}
+	
+	.input-wrapp{
+		margin-bottom: 32px;
+
+		label{
+			display: block;
+			width: 100%;
+			//regular
+			font-size: 14px;
+			line-height: 24px;
+		}
+
+		input{
+			width: 100%;
+			height: 48px;
+			background: #FFFFFF;
+			
+			border: 2px solid #E7EAF1;
+			border-radius: 4px;
+			box-sizing: border-box;
+			padding: 5px 10px;
+			font-size: 16px;
+			line-height: 24px;
+
+		}
+	}
+
+	button{
+		width: 100%;
+		height: 48px;
+		background: #0B00B5;
+		border-radius: 4px;
+		color: white;
+		display: flex;
+		align-items:center;
+		justify-content: center;
+		font-size: 16px;
+		line-height: 24px;
+		//regular
+	}
+}
