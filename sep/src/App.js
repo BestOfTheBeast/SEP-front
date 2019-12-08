@@ -1,25 +1,45 @@
-import React from 'react';
+import React, { useState, useEffect }  from 'react';
+import { Form } from './components/Form';
 import logo from './img/logo.svg';
 import illustr from './img/illustration.svg';
 import './css/App.css';
 
 function App() {
+  const [ users, setUsers ] = useState([]);
+
+    const createUser = async (user) => {
+        const response = await fetch('http://localhost:4000', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        });
+
+        if (!response.ok) {
+            console.error('failed to create user');
+        }
+
+        const data = await response.json();
+        setUsers((users) => [ data, ...users ])
+    }
+
+    useEffect(() => {
+        (async () => {
+            const response = await fetch('http://localhost:4000');
+
+            if (!response.ok) {
+                console.error('failed to fetch users');
+            }
+
+            const data = await response.json();
+            setUsers((users) => [ ...data, ...users ])
+        })()
+    }, []);
+
   return (
     <div className="App">
-     {/*<header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Фронт за пів дня
-        </a>
-      </header>*/}
+     
       <div className="left-side">
         <a
           className="link"
@@ -29,27 +49,8 @@ function App() {
           <img src={logo} className="logo" alt="logo" />
         </a>
 
-        <form method="">
-          <h1>Реєстрація</h1>
-
-          <div className="input-wrapp">
-            <label for="name">Имя</label>
-            <input type='text' id="name" />
-          </div>
-
-          <div className="input-wrapp">
-            <label for="name">Назва підгрупи</label>
-            <input type='text' id="name" />
-          </div>
-
-          <div className="input-wrapp">
-            <label for="name">Пароль</label>
-            <input type='password' id="name" />
-          </div>
-
-          <button>Зарегистрироваться</button>
-
-        </form>
+        
+        <Form createUser = { createUser }/>
       </div>
       <div className="right-side">
         <div className="wrapp">
